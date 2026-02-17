@@ -139,7 +139,7 @@ namespace LostAndChained.Phases.Attacks
 
             FastCharge = new BaseAttackString(LaceAttackControl, "FASTCHARGE", new List<Type>
             {
-                typeof(LaceSplashIn), typeof(LaceSplashOutGroundFar), typeof(LaceSingleChargeFast), typeof(LaceSplashIn)
+                typeof(LaceSplashIn), typeof(LaceSplashOutGroundClose), typeof(LaceSingleChargeFast), typeof(LaceSplashIn)
             });
 
             PullUpJumpslashHold = new BaseAttackString(LaceAttackControl, "PULLUPJUMPSLASHHOLD", new List<Type>

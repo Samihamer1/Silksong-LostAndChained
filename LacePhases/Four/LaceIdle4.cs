@@ -64,14 +64,14 @@ namespace LostAndChained.LacePhases._4
                 },
                 missedMax = new[]
                 {
-                    new FsmInt(4),
-                    new FsmInt(4),
-                    new FsmInt(4),
-                    new FsmInt(6),
-                    new FsmInt(4),
-                    new FsmInt(4),
-                    new FsmInt(4),
-                    new FsmInt(4)
+                    new FsmInt(8),
+                    new FsmInt(8),
+                    new FsmInt(8),
+                    new FsmInt(8),
+                    new FsmInt(8),
+                    new FsmInt(8),
+                    new FsmInt(8),
+                    new FsmInt(8)
                 },
                 activeBool = true
             });
