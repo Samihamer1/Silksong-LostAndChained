@@ -8,7 +8,7 @@ namespace = "Samihamer1"
 description = "Lost Lace reworked into a duo fight with Grand Mother Silk."
 
 # Replace this with a correct repo URL if the default is not accurate
-websiteUrl = "https://github.com/Samihamer1/LostAndChained"
+websiteUrl = "https://github.com/Samihamer1/Silksong-LostAndChained"
 containsNsfwContent = false
 
 
