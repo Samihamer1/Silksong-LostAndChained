@@ -1,6 +1,7 @@
 ﻿using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 using LostAndChained.Components;
+using LostAndChained.LacePhases.Attacks;
 using LostAndChained.Phases.Attacks;
 using LostAndChained.Phases.One;
 using Silksong.FsmUtil;
@@ -28,6 +29,13 @@ namespace LostAndChained.LacePhases._4
 
             //Attack select
             FsmState attackSelectState = _controlFSM.AddState(PhaseNames.Idle4 + " Attack");
+            attackSelectState.AddMethod(_ =>
+            {
+                if (!LaceBlackThreads.OnCooldown())
+                {
+                    _controlFSM.SendEvent("BLACK");
+                }
+            });
             attackSelectState.AddAction(new SendRandomEventV4
             {
                 events = new[] {
@@ -83,6 +91,7 @@ namespace LostAndChained.LacePhases._4
             attackSelectState.AddTransition("CIRCLESLASHES", LaceAttackList.CircleSlashes.GetStartStateName());
             attackSelectState.AddTransition("BULLETDIVE", LaceAttackList.BulletDive.GetStartStateName());
             attackSelectState.AddTransition("JUMPSLASHSTAB", LaceAttackList.JumpSlashRapidStab.GetStartStateName());
+            attackSelectState.AddTransition("BLACK", LaceAttackList.BlackThreads.GetStartStateName());
 
             //Control state
             FsmState controlState = _controlFSM.CopyState("Idle", PhaseNames.Idle4);

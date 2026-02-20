@@ -59,7 +59,7 @@ namespace LostAndChained.LacePhases.Attacks
             MultiHitting2.ChangeTransition("FINISHED", MultihitSlash2.name);
             MultihitSlash2.ChangeTransition("FINISHED", MultihitSlashEnd.name);
             SlashEnd.ChangeTransition("FINISHED", _endStateName);
-            MultihitSlashEnd.ChangeTransition("FINISHED", "Idle Choice");
+            MultihitSlashEnd.ChangeTransition("FINISHED", _endStateName);
         }
     }
 }

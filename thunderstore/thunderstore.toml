@@ -1,11 +1,11 @@
 ﻿[config]
-schemaVersion = "1.0.0"
+schemaVersion = "0.1.0"
 
 [package]
 # The name of the team you are publishing as
 namespace = "Samihamer1"
 # max 250 characters
-description = "Lost Lace reworked into a duo fight with Grand Mother Silk."
+description = "A reimagined final battle with Lost Lace, featuring Grand Mother Silk"
 
 # Replace this with a correct repo URL if the default is not accurate
 websiteUrl = "https://github.com/Samihamer1/Silksong-LostAndChained"

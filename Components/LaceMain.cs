@@ -43,6 +43,27 @@ namespace LostAndChained.Components
             CreateTeleportTelegraph();
             PatchSuperJumpSequence();
             PatchStun();
+            PatchBlackThreads();
+        }
+
+        public void ActivateBlackThreads()
+        {
+            GameObject blackThreads = _bossObject.transform.parent.gameObject.Child("Black Thread Attack (deprecated)");
+            PlayMakerFSM attackControl = blackThreads.LocateMyFSM("Control");
+            attackControl.SendEvent("ATTACK");
+        }
+
+        private void PatchBlackThreads()
+        {
+            GameObject blackThreads = _bossObject.transform.parent.gameObject.Child("Black Thread Attack (deprecated)");
+            blackThreads.transform.position = new Vector3(0, 0, 0);
+            blackThreads.SetActive(true);
+
+            PlayMakerFSM catchControl = blackThreads.LocateMyFSM("Catch Control");
+            catchControl.AddMethod("State 1", _ =>
+            {
+                LaceControlFSM.SendEvent("CS TELE");
+            });
         }
 
         private void PatchStun()
@@ -119,6 +140,8 @@ namespace LostAndChained.Components
 
             LaceControlFSM.AddMethod("CS Ready", _ =>
             {
+                //LaceControlFSM.GetBoolVariable("Splashed In").value = false;
+                DeactivateTeleportTelegraph();
                 if (LaceBossScene.Instance.phaseNumber != 3)
                 {
                     LaceControlFSM.SendEvent("FINISHED");                    
@@ -129,6 +152,8 @@ namespace LostAndChained.Components
             });
             LaceControlFSM.AddAction("CS Ready", new Wait() { time = 1.8f, realTime = false, finishEvent = FsmEvent.GetFsmEvent("ALTERNATE") });
             LaceControlFSM.AddTransition("CS Ready", "ALTERNATE", LaceAttackList.CrossSlashCutscene.GetStartStateName());
+
+            LaceControlFSM.ChangeTransition("CS Flip Back", "LAND", LaceAttackList.ForceSplashIn.GetStartStateName());
         }
 
         public void ActivateAltCrossSlash()

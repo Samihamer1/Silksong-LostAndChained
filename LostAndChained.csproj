@@ -33,7 +33,6 @@
     <PackageReference Include="Microsoft.Unity.Analyzers" Version="1.26.0" PrivateAssets="all" />
     <PackageReference Include="Silksong.AssetHelper" Version="1.2.1" />
 	  <PackageReference Include="Silksong.FsmUtil" Version="0.3.13" />
-	  <PackageReference Include="Silksong.PrepatcherPlugin" Version="1.3.0" />
     <PackageReference Include="UnityEngine.Modules" Version="6000.0.50" IncludeAssets="compile" />
     <PackageReference Include="Silksong.GameLibs" Version="*-*" PrivateAssets="all" />
   </ItemGroup>

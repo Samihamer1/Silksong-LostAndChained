@@ -1,13 +1,8 @@
 using BepInEx;
 using HarmonyLib;
 using LostAndChained.Patches;
-using PrepatcherPlugin;
-using Silksong.AssetHelper.Dev;
 using Silksong.AssetHelper.ManagedAssets;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 namespace LostAndChained;
 
@@ -72,9 +67,46 @@ public partial class LostAndChainedPlugin : BaseUnityPlugin
         if (evolved.activeSelf)
         {
             IconCounter counter = fakeHealth.GetComponent<IconCounter>();
-            counter.SetCurrent(newHP);
-        }
+            int origHP = counter.currentValue;
 
+            //1 since the first is a prefab
+            for (int i = 1; i < fakeHealth.transform.childCount; i++)
+            {
+                GameObject hp = fakeHealth.transform.GetChild(i).gameObject;
+                IconCounterItem counteritem = hp.GetComponent<IconCounterItem>();
+
+                if (i <= newHP && i > origHP && newHP > origHP)
+                {
+                    hp.SetActive(false); //refreshing the gain hp animation, but only if its a newly added hp mask
+                }
+            }
+
+            counter.SetCurrent(newHP);
+         }
+
+    }
+
+    public void ModifyEvolvedHPBar()
+    {
+        GameObject thread = HudCanvas.instance.gameObject.Child("Thread");
+        if (thread == null) { return; }
+
+        GameObject spool = thread.Child("Spool");
+        if (spool == null) { return; }
+
+        GameObject bindOrb = spool.Child("Bind Orb");
+        if (bindOrb == null) { return; }
+
+        GameObject evolved = bindOrb.Child("Evolved");
+        if (evolved == null) { return; }
+
+        GameObject fakeHealth = evolved.Child("Fake Health");
+        if (fakeHealth == null) { return; }
+
+        GameObject health = fakeHealth.Child("Health");
+        IconCounterItem counteritem = health.GetComponent<IconCounterItem>();
+        counteritem.inactiveDisable = false;
+        counteritem.inactiveState.Color = new Color(0, 0, 0, 1);
     }
 
 

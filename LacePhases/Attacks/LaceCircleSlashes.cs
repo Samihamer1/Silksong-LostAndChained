@@ -34,10 +34,6 @@ namespace LostAndChained.LacePhases.Attacks
             FsmState Stomp = CopyState("Stomp", "Circle Slashes Stomp");
             FsmState Slam = CopyState("Slam", "Circle Slashes Slam");
 
-            Slam.AddMethod(_ =>
-            {
-                //LaceBossScene.Instance.LaceMain._bossObject.GetComponent<BoxCollider2D>().enabled = false;
-            });
 
 
             //Transitions

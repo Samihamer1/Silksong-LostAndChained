@@ -45,6 +45,9 @@ namespace LostAndChained.Phases.Attacks
         public static BaseAttackString CircleSlashes;
         public static BaseAttackString BulletDive;
         public static BaseAttackString JumpSlashRapidStab;
+        public static BaseAttackString BlackThreads;
+
+        public static BaseAttackString ForceSplashIn;
 
         public static void InitLaceAttackStrings(PlayMakerFSM LaceAttackControl)
         {
@@ -159,7 +162,7 @@ namespace LostAndChained.Phases.Attacks
 
             CircleSlashes = new BaseAttackString(LaceAttackControl, "CIRCLESLASHES", new List<Type>
             {
-                typeof(LaceSplashIn), typeof(LaceSplashOutGroundFar), typeof(LaceCircleSlashes), typeof(LaceSplashIn)
+                typeof(LaceThreadCheck), typeof(LaceSplashIn), typeof(LaceSplashOutGroundFar), typeof(LaceCircleSlashes), typeof(LaceSplashIn)
             });
 
             BulletDive = new BaseAttackString(LaceAttackControl, "BULLETDIVE", new List<Type>
@@ -170,6 +173,16 @@ namespace LostAndChained.Phases.Attacks
             JumpSlashRapidStab = new BaseAttackString(LaceAttackControl, "JUMPSLASHRAPIDSTAB", new List<Type>
             {
                 typeof(LaceSplashIn), typeof(LaceSplashOutGroundClose), typeof(LaceJumpSlash), typeof(LaceRapidStabAir), typeof(LaceSplashIn)
+            });
+
+            BlackThreads = new BaseAttackString(LaceAttackControl, "BLACKTHREADS", new List<Type>
+            {
+                typeof(LaceBlackThreads)
+            });
+
+            ForceSplashIn = new BaseAttackString(LaceAttackControl, "FORCESPLASHIN", new List<Type>
+            {
+                typeof(LaceForceSplashIn)
             });
         }
     }

@@ -18,6 +18,8 @@ namespace LostAndChained.Patches
                 __instance.gameObject.layer == LayerMask.NameToLayer("Enemies"))
             {
                 __instance.gameObject.transform.parent.gameObject.AddComponent<LaceBossScene>(); //Adding to the Scene
+
+                LostAndChainedPlugin.Instance.ModifyEvolvedHPBar(); //putting this here because I want to
             }
         }
 
