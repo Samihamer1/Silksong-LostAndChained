@@ -1,4 +1,5 @@
 ﻿using HutongGames.PlayMaker;
+using HutongGames.PlayMaker.Actions;
 using LostAndChained.Phases.Attacks;
 using Silksong.FsmUtil;
 using System;
@@ -26,13 +27,28 @@ namespace LostAndChained.Phases.One
             //controlState.ChangeTransition("ATTACK", GMSAttackList.DashSlashAttack.GetStartStateName());
 
             FsmState attackState = _controlFSM.AddState("Idle 1 Attack Choice");
-            attackState.AddMethod(_ =>
+            attackState.AddAction(new SendRandomEventV4
             {
-                if (UnityEngine.Random.Range(0, 2) == 0)
-                {
-                    _controlFSM.SendEvent("DASH");
-                }
-                _controlFSM.SendEvent("HAND");
+                events = new[] {
+                    FsmEvent.GetFsmEvent("DASH"),
+                    FsmEvent.GetFsmEvent("HAND"),
+                },
+                weights = new[]
+               {
+                    new FsmFloat(1f),
+                    new FsmFloat(1f),
+                },
+                eventMax = new[]
+               {
+                    new FsmInt(2),
+                    new FsmInt(2),
+                },
+                missedMax = new[]
+               {
+                    new FsmInt(4),
+                    new FsmInt(4),
+                },
+                activeBool = true
             });
 
             controlState.ChangeTransition("ATTACK", "Idle 1 Attack Choice");

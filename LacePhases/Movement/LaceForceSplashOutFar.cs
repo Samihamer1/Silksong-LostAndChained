@@ -1,4 +1,5 @@
-﻿using HutongGames.PlayMaker;
+﻿using GlobalEnums;
+using HutongGames.PlayMaker;
 using LostAndChained.Components;
 using LostAndChained.Phases.Attacks;
 using Silksong.FsmUtil;
@@ -73,6 +74,8 @@ namespace LostAndChained.LacePhases.Movement
                 _controlFSM.GetBoolVariable("Splashed In").value = false;
                 _controlFSM.gameObject.GetComponent<MeshRenderer>().enabled = true;
                 _controlFSM.gameObject.GetComponent<DamageHero>().enabled = true;
+                _controlFSM.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                _controlFSM.gameObject.layer = (int)PhysLayers.ENEMIES;
 
                 if (_controlFSM.GetFloatVariable("Tele Y").value > Constants.Constraints.LaceLandY)
                 {

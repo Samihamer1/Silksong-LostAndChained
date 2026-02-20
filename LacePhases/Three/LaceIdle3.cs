@@ -1,4 +1,5 @@
-﻿using HutongGames.PlayMaker;
+﻿using GlobalEnums;
+using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 using LostAndChained.Components;
 using LostAndChained.Phases.Attacks;
@@ -7,6 +8,7 @@ using Silksong.FsmUtil;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 using static LostAndChained.Constants;
 
 namespace LostAndChained.LacePhases.Three
@@ -97,8 +99,6 @@ namespace LostAndChained.LacePhases.Three
                     activateTransition = false;
                     LaceBossScene.Instance.phaseActive = true;
                     _controlFSM.gameObject.GetComponent<HealthManager>().hp = Constants.PhaseValues.Phase3HP;
-                    //_controlFSM.gameObject.GetComponent<HealthManager>().hp = 1; //testng
-                    //_controlFSM.SendEvent("PHASE2");
                 }
 
                 if (!_controlFSM.GetBoolVariable("Splashed In").value)

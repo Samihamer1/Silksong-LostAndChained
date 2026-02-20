@@ -1,4 +1,5 @@
-﻿using HutongGames.PlayMaker;
+﻿using GlobalEnums;
+using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 using LostAndChained.Components;
 using LostAndChained.LacePhases.Attacks;
@@ -8,6 +9,7 @@ using Silksong.FsmUtil;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 using static LostAndChained.Constants;
 
 namespace LostAndChained.LacePhases._4
