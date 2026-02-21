@@ -51,6 +51,14 @@ namespace LostAndChained.Components
             GameObject blackThreads = _bossObject.transform.parent.gameObject.Child("Black Thread Attack (deprecated)");
             PlayMakerFSM attackControl = blackThreads.LocateMyFSM("Control");
             attackControl.SendEvent("ATTACK");
+
+            _bossObject.GetComponent<HealthManager>().OnDeath += DisableThreads;
+        }
+
+        private void DisableThreads()
+        {
+            GameObject blackThreads = _bossObject.transform.parent.gameObject.Child("Black Thread Attack (deprecated)");
+            blackThreads.SetActive(false);
         }
 
         private void PatchBlackThreads()
