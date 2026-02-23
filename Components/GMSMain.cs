@@ -326,7 +326,7 @@ namespace LostAndChained.Components
             GameObject pattern1 = patterns.Child("Pattern 1");
             GameObject pattern2 = patterns.Child("Pattern 2");
 
-            patterns.transform.localPosition = new Vector3(Constraints.ArenaCenterX, Constraints.ArenaCenterY, 0);
+            patterns.transform.localPosition = new Vector3(29, Constraints.ArenaCenterY, 0);
             pattern1.transform.localPosition = Vector3.zero;
             pattern2.transform.localPosition = Vector3.zero;
 
@@ -336,7 +336,9 @@ namespace LostAndChained.Components
 
         private void PatchWeb(PlayMakerFSM webControl)
         {
-            webControl.GetVector3Variable("Init Pos").Value = new Vector3(Constraints.ArenaCenterX, Constraints.ArenaCenterY, 0);
+            webControl.GetVector3Variable("Init Pos").Value = new Vector3(29, Constraints.ArenaCenterY, 0);
+            webControl.GetFirstActionOfType<TranslateRandom>("Random Shift").translateMin = new Vector3(-0.5f, -2f);
+            webControl.GetFirstActionOfType<TranslateRandom>("Random Shift").translateMax = new Vector3(0.5f, 0);
         }
 
         private void PatchPhaseShift()

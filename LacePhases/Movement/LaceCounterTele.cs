@@ -43,7 +43,8 @@ namespace LostAndChained.LacePhases.Movement
             });
 
             CounterTeleOut.ChangeTransition("FINISHED", CounterTeleIn.name);
-            CounterTeleIn.ChangeTransition("FINISHED", _endStateName);
+            CounterTeleIn.ChangeTransition("FINISHED", PostState.name);
+            PostState.AddTransition("FINISHED", _endStateName);
         }
     }
 }
