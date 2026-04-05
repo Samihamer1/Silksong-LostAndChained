@@ -30,7 +30,7 @@ namespace LostAndChained.Components
 
         public void Init()
         {
-            LaceControlFSM = _bossObject.LocateMyFSM("Control");
+            LaceControlFSM = _bossObject.GetFsmPreprocessed("Control");
 
             //LaceControlFSM.RemoveTransition("Tele Init", "FINISHED");
 
@@ -67,7 +67,7 @@ namespace LostAndChained.Components
             blackThreads.transform.position = new Vector3(0, 0, 0);
             blackThreads.SetActive(true);
 
-            PlayMakerFSM catchControl = blackThreads.LocateMyFSM("Catch Control");
+            PlayMakerFSM catchControl = blackThreads.GetFsmPreprocessed("Catch Control");
             catchControl.AddMethod("State 1", _ =>
             {
                 LaceControlFSM.SendEvent("CS TELE");
@@ -83,7 +83,7 @@ namespace LostAndChained.Components
         private void PatchSuperJumpSequence()
         {
             GameObject sequence = _bossObject.gameObject.transform.parent.gameObject.Child("Superjump Sequence");
-            PlayMakerFSM control = sequence.LocateMyFSM("Control");
+            PlayMakerFSM control = sequence.GetFsmPreprocessed("Control");
 
             control.ChangeTransition("Lift 3", "FINISHED", "Can Superjump");
         }
@@ -186,7 +186,7 @@ namespace LostAndChained.Components
 
         private void ModifyDeathControl()
         {
-            PlayMakerFSM deathcontrol = _bossObject.LocateMyFSM("Death Control");
+            PlayMakerFSM deathcontrol = _bossObject.GetFsmPreprocessed("Death Control");
 
             FsmState checkHPState = deathcontrol.AddState("Check HP P2");
             checkHPState.AddMethod(_ =>

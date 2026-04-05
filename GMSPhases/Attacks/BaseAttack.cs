@@ -34,6 +34,14 @@ namespace LostAndChained.Phases.Attacks
         /// <returns></returns>
         public FsmState CopyState(string fromState, string toState)
         {
+            //pure testing
+            //Log.Info("fromState: " + fromState);
+            //Log.Info("toState: " + toState);
+            ///foreach (FsmState state in _controlFSM.FsmStates)
+            //{
+            //    Log.Info(state.Name + " exists");
+            //}
+
             return _controlFSM.CopyState(fromState, _parentAttackString + GetAttackName() + toState);
         }
 

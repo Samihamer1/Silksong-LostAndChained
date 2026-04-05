@@ -34,7 +34,11 @@ namespace LostAndChained.Components
         {
             _mainScene = mainScene; _bossObject = bossObject;
 
-            _controlFSM = _bossObject.LocateMyFSM("Control");
+            _controlFSM = _bossObject.GetFsmPreprocessed("Control");
+
+            //preprocessing test
+            GameObject deathsequence = _bossObject.transform.parent.gameObject.Child("Death Sequence");
+            PlayMakerFSM deathcontrol = deathsequence.GetFsmPreprocessed("Control");
         }
 
         public void Init()
@@ -238,7 +242,7 @@ namespace LostAndChained.Components
                 HeroController.instance.StartAnimationControl();
                 HeroController.instance.playerData.SetBool("isInvincible", false);
                 HeroController.instance.playerData.SetBool("disablePause", false);
-                ToolItemManager.activeState = ToolsActiveStates.Active;
+                ToolItemManager.SetActiveState(ToolsActiveStates.Active);
             });
 
             //FsmState wakeupState = deathcontrol.AddState("Hornet Wakeup");
